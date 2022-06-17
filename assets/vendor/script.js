@@ -1,6 +1,8 @@
 const question = document.querySelector('.question'),
   questionContainer = document.querySelector('.question-container'),
-  choiceContainer = Array.from(document.getElementsByClassName('choice-container'));
+  choiceContainer = Array.from(document.getElementsByClassName('choice-container')),
+  loadder = document.querySelector('.loader'),
+  wrapper = document.querySelector('.wrapper'),
   choices = Array.from(document.getElementsByClassName('choice-text'));
   
 let currentQuestion = {},
@@ -39,6 +41,8 @@ const startTest = () => {
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+  wrapper.classList.remove('hidden');
+  loadder.classList.add('hidden');
 }
 
 //function to generate newQuesetions
