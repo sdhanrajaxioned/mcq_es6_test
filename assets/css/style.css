@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 /* ==========================================================================
    1. CSS Reset Code
    ========================================================================== */
@@ -82,7 +83,7 @@ sub { bottom: -.25em; }
 /*for all*/
 body {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a { 
@@ -108,47 +109,138 @@ li {
   width: 86%; 
   margin: 0 auto;
 }
-/*=================================
-  Header styling starts here
-=================================*/
-
-
-
-
-
-
-/*=================================
-  Header styling ends here
-=================================*/  
 
 /*=================================
   main styling starts here
 =================================*/
 
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+}
 
+main { max-width: 600px; }
 
+h1 { 
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
 
+.question-container {
+  padding: 35px 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
 
+.question {
+  padding-bottom: 20px;
+  color: #1363df;
+  font-size: 20px;
+  font-weight: 700;
+}
 
+.choice-container {
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  border-radius:  10px;
+  border: 1px solid #a149fa;
+}
 
+.choice-container.incorrect { 
+  background-color: #ff5d5d;
+  border: 1px solid transparent;
+}
+.choice-container.incorrect .choice-text,
+.choice-container.correct .choice-text,
+.choice-container.incorrect .choice-prefix,
+.choice-container.correct .choice-prefix{ 
+  color: #fff;
+}
 
+.choice-container.correct { 
+  background-color: #5fd068;
+  border: 1px solid transparent;
+}
+
+.choice-container:hover {
+  background-color: #ffb562;
+  transition: .4s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.choice-container:last-child{ margin-bottom: 0 ;}
+
+.choice-prefix { flex-basis: 10%; }
+
+.choice-text { 
+  flex-basis: 90%; 
+  cursor: pointer;
+}
+
+/* result page */
+
+.icon {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  text-indent: -9999px; 
+}
+
+.icon::after {
+  content: "\f091";
+  font-family: "fontAwesome";
+  font-size: 50px;
+  color: #ffb562;
+  float: right;
+  text-indent: 0;
+}
+
+.result-container {
+  min-width: 320px;
+  padding: 50px 0;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.result { color: #1363df; }
+
+.result-desc { 
+  padding-bottom: 30px;
+  color: #1363df;
+  font-size: 19px;
+}
+
+.result-desc span { 
+  font-size: 30px;
+  color: #5fd068;
+  font-weight: 900;
+}
+
+.try-btn {
+  padding: 8px 35px;
+  color: #1363df;
+  border: 1px solid #1363df;
+  border-radius: 10px;
+}
+
+.try-btn:hover {
+  border: 1px solid transparent;
+  background-color: #ffb562;
+  transition: .4s ease-in-out;
+}
 /*=================================
   main styling ends here
 =================================*/
-
-/*=================================
-  footer styling starts here
-=================================*/ 
-
-
-
-
-
-
-
- /*=================================
-  footer styling ends here
-=================================*/ 
 
 /*media query starts*/
 /*media query for 995px starts here*/
