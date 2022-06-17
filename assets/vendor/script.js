@@ -21,20 +21,17 @@ const fetchData = () => {
         const formattedQuestion = {
           question: loadedQuestion.question,
         };
-  
         const answerChoices = [...loadedQuestion.incorrect_answers];
         formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
         answerChoices.splice(formattedQuestion.answer-1, 0, loadedQuestion.correct_answer);
         answerChoices.forEach((choice, index) => formattedQuestion['choice' + (index + 1)] = choice);
-  
         return formattedQuestion;
       });
       startTest();
     })
     .catch((error) => alert.error(error));
 }
-
-document.addEventListener("DOMContentLoaded", fetchData)
+fetchData();
   
 //function to display questions on page load
 const startTest = () => {
@@ -48,23 +45,21 @@ const startTest = () => {
 getNewQuestion = () => {
   if(availableQuestions.length === 0 || questionCounter >= maxQuestions) {
     localStorage.setItem('score', score);
-      //go to the end page
-      return window.location.assign('results.html');
+    return window.location.assign('results.html');  //go to the result page
   }
-
   questionCounter++;
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionIndex];
-    question.innerText = currentQuestion.question;
+  question.innerText = currentQuestion.question; //gets current question
 
-    choices.forEach((choice) => {
-        const number = choice.dataset['number'];
-        choice.innerText = currentQuestion['choice' + number];
-    });
+  //sets choices inner text value 
+  choices.forEach((choice) => {
+    const number = choice.dataset['number'];
+    choice.innerText = currentQuestion['choice' + number];
+  });
 
-    availableQuestions.splice(questionIndex, 1);
-    acceptingAnswers = true;
-    
+  availableQuestions.splice(questionIndex, 1);
+  acceptingAnswers = true;
 };
 
 //checks whethere selected choice is correct or not
@@ -74,14 +69,11 @@ choices.forEach((choice) => {
     acceptingAnswers = false;
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset['number'];
-    const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
-    
-    if(classToApply === 'correct') {
-      score++;
-    }
-    
+    const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'; //returns correct or incorrect
+    if(classToApply === 'correct') score++;
     selectedChoice.parentElement.classList.add(classToApply);
     correctAnswer();    
+
     setTimeout(() => {
       choiceContainer.forEach((container) => container.classList.remove('correct'));
       choice.parentElement.classList.remove('correct');
